@@ -1,0 +1,106 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #000000; /* Black background for galaxy effect */
+    overflow: hidden; /* Prevent scrollbars */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animated galaxy background */
+@keyframes stars {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    100% {
+        transform: translateX(-100%) translateY(-100%);
+    }
+}
+
+/* Galaxy effect background */
+body {
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 1) 100%), url('https://source.unsplash.com/1920x1080/?galaxy,stars') repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    animation: stars 60s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* The container to center the cube */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw; /* Ensures it takes full screen width */
+    position: relative;
+    perspective: 1000px; /* Adds depth to the scene */
+    overflow: hidden; /* Ensures no overflow outside of container */
+}
+
+/* The cube itself */
+.cube {
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    position: relative; /* Makes sure it's centered within the container */
+    transition: transform 0.5s ease; /* Smooth transition on hover */
+}
+
+/* Faces of the cube */
+.face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.8); /* Default color, will be overwritten */
+}
+
+/* Assigning dark purple and dark blue colors to each face */
+.front {
+    transform: translateZ(100px);
+    background: #673ab7;
+}
+/* Dark Purple */
+.back {
+    transform: rotateY(180deg) translateZ(100px);
+    background: #3f51b5;
+}
+/* Dark Blue */
+.left {
+    transform: rotateY(-90deg) translateZ(100px);
+    background: #512da8;
+}
+/* Dark Purple */
+.right {
+    transform: rotateY(90deg) translateZ(100px);
+    background: #303f9f;
+}
+/* Dark Blue */
+.top {
+    transform: rotateX(90deg) translateZ(100px);
+    background: #5c6bc0;
+}
+/* Dark Blue */
+.bottom {
+    transform: rotateX(-90deg) translateZ(100px);
+    background: #7e57c2;
+}
+/* Dark Purple */
+
+/* Cube will only rotate when hovered */
+.cube:hover {
+    transform: rotateX(30deg) rotateY(30deg); /* Rotate the cube when hovering */
+}
